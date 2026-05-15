@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 
-const LOGO = '/linkneat-logo.svg'
+const LOGO = '/images/logoForLinkneat.jpeg'
+const IMG_HANDSHAKE_TECH = '/images/WhatsApp%20Image%202026-05-14%20at%207.14.43%20PM.jpeg'
+const IMG_HANDSHAKE_CITY = '/images/WhatsApp%20Image%202026-05-14%20at%207.14.48%20PM.jpeg'
+const IMG_DEVELOPER     = '/images/WhatsApp%20Image%202026-05-14%20at%207.14.55%20PM.jpeg'
+const IMG_CONSULTANT    = '/images/WhatsApp%20Image%202026-05-14%20at%207.15.19%20PM.jpeg'
+const IMG_CAREER        = '/images/WhatsApp%20Image%202026-05-14%20at%207.15.36%20PM.jpeg'
 
 function Navbar() {
   const [open, setOpen] = useState(false)
@@ -134,6 +139,7 @@ function Hero() {
   return (
     <section className="hero" id="home">
       <div className="hero-decor">
+        <img src={IMG_HANDSHAKE_CITY} alt="" aria-hidden="true" className="hero-bg-img" />
         <div className="decor-circle c1" />
         <div className="decor-circle c2" />
         <div className="decor-circle c3" />
@@ -144,8 +150,8 @@ function Hero() {
           <div className="hero-badge"><span className="badge-dot" />🏆 Serving Sacramento Since 2021</div>
           <h1>Professional Services<br /><span className="gold">You Can Trust</span></h1>
           <p className="hero-sub">
-            Tax, Immigration, Business &amp; Translation services for individuals, families, and small businesses —
-            in <strong style={{ color: '#e8c06a' }}>English, Dari &amp; Pashto</strong>.
+            Tax, Immigration, Business &amp; Translation services for individuals, families, and small businesses.
+            Served in <strong style={{ color: '#e8c06a' }}>English, Dari &amp; Pashto</strong>.
           </p>
           <div className="hero-btns">
             <a href="#contact" className="btn btn-gold btn-lg">Book Free Consultation</a>
@@ -299,6 +305,13 @@ function Services() {
           <h2>Our Services</h2>
           <p>Professional, reliable, and affordable services for individuals, families, entrepreneurs, and small businesses.</p>
         </div>
+        <div className="svc-banner">
+          <img src={IMG_CONSULTANT} alt="Professional career and business consulting services" />
+          <div className="svc-banner-overlay">
+            <span className="svc-banner-tag">Tax · Immigration · Business · Translation</span>
+            <p>Expert guidance tailored to your unique situation, in English, Dari &amp; Pashto</p>
+          </div>
+        </div>
         <div className="services-grid services-grid-4">
           {SERVICES.map((s, i) => (
             <div className="service-card" key={i}>
@@ -357,18 +370,27 @@ function WhyUs() {
         <div className="section-head">
           <span className="section-tag">Why Choose Us</span>
           <h2>Why Choose Linkneat?</h2>
-          <p>We're more than a tax office — we're your community partner for professional services in your language.</p>
+          <p>We're more than a tax office. We're your community partner for professional services in your language.</p>
         </div>
-        <div className="why-grid">
-          {WHY_US.map((item, i) => (
-            <div className="why-card" key={i}>
-              <span className="why-icon">{item.icon}</span>
-              <div>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
-              </div>
+        <div className="why-layout">
+          <div className="why-img-panel">
+            <img src={IMG_CAREER} alt="Career development and leadership" className="why-panel-img" />
+            <div className="why-panel-badge">
+              <div className="wpb-num">2,000+</div>
+              <div className="wpb-label">Clients Served Since 2021</div>
             </div>
-          ))}
+          </div>
+          <div className="why-grid">
+            {WHY_US.map((item, i) => (
+              <div className="why-card" key={i}>
+                <span className="why-icon">{item.icon}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -378,10 +400,11 @@ function WhyUs() {
 function CtaBand() {
   return (
     <section className="cta-band">
+      <img src={IMG_HANDSHAKE_TECH} alt="" aria-hidden="true" className="cta-band-bg-img" />
       <div className="cta-band-inner">
         <div className="cta-band-text">
           <h2>Professional Service. Trusted Support. Community Focused.</h2>
-          <p>Whether you need tax preparation, immigration documentation, business consulting, or translation — we're here to help in English, Dari, and Pashto.</p>
+          <p>Whether you need tax preparation, immigration documentation, business consulting, or translation, we're here to help in English, Dari, and Pashto.</p>
         </div>
         <div className="cta-band-actions">
           <a href="#contact" className="btn btn-gold btn-lg cta-pulse">Book Free Consultation</a>
@@ -408,6 +431,16 @@ function Process() {
           <h2>Simple. Fast. Done Right.</h2>
           <p>Our straightforward process makes professional services easy and stress-free from start to finish.</p>
         </div>
+        <div className="process-visual">
+          <div className="process-visual-img">
+            <img src={IMG_DEVELOPER} alt="Our team working diligently for clients" />
+          </div>
+          <div className="process-visual-text">
+            <h3>Dedicated to Your Success</h3>
+            <p>Our experienced team handles every detail of your case with accuracy and care, so you can focus on what matters most.</p>
+            <a href="#contact" className="btn btn-gold">Start Today →</a>
+          </div>
+        </div>
         <div className="steps">
           {STEPS.map((s, i) => (
             <div className="step" key={i}>
@@ -433,7 +466,7 @@ const TESTIMONIALS = [
   {
     name: 'Ahmad Karimi',
     role: 'New Resident',
-    text: 'They helped my family with immigration documentation and tax filing — all in Dari. No language barrier at all. Very professional and trustworthy team.',
+    text: 'They helped my family with immigration documentation and tax filing, all in Dari. No language barrier at all. Very professional and trustworthy team.',
     rating: 5,
     result: 'Immigration + Tax',
   },
@@ -505,7 +538,7 @@ const FAQS = [
   },
   {
     q: 'Do you serve clients who speak Dari or Pashto?',
-    a: 'Yes — this is one of our key strengths. Our team provides full services in English, Dari, and Pashto so there is no language barrier. We are proud to serve the Afghan community in Sacramento.',
+    a: 'Yes, this is one of our key strengths. Our team provides full services in English, Dari, and Pashto so there is no language barrier. We are proud to serve the Afghan community in Sacramento.',
   },
   {
     q: 'What are your office hours?',
@@ -561,7 +594,7 @@ function Contact() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `New Consultation Request — ${form.service || 'General'}`,
+          subject: `New Consultation Request: ${form.service || 'General'}`,
           from_name: 'Linkneat Website',
           name: form.name,
           email: form.email,
@@ -588,7 +621,7 @@ function Contact() {
         <div className="contact-info">
           <span className="section-tag">Get In Touch</span>
           <h2>Contact Us Today</h2>
-          <p>Whether you need tax preparation, immigration documentation, business consulting, or translation — Linkneat Career &amp; Tax Services is here to help.</p>
+          <p>Whether you need tax preparation, immigration documentation, business consulting, or translation, Linkneat Career &amp; Tax Services is here to help.</p>
           <div className="contact-details">
             <div className="contact-item">
               <span>📍</span>
