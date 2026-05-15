@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 const LOGO = '/images/logoForLinkneat.jpeg'
@@ -7,6 +7,20 @@ const IMG_HANDSHAKE_CITY = '/images/WhatsApp%20Image%202026-05-14%20at%207.14.48
 const IMG_DEVELOPER     = '/images/WhatsApp%20Image%202026-05-14%20at%207.14.55%20PM.jpeg'
 const IMG_CONSULTANT    = '/images/WhatsApp%20Image%202026-05-14%20at%207.15.19%20PM.jpeg'
 const IMG_CAREER        = '/images/WhatsApp%20Image%202026-05-14%20at%207.15.36%20PM.jpeg'
+
+function useReveal() {
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target) }
+      }),
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    )
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el))
+    return () => obs.disconnect()
+  }, [])
+}
 
 function Navbar() {
   const [open, setOpen] = useState(false)
@@ -136,8 +150,19 @@ function LangCard() {
 }
 
 function Hero() {
+  const heroRef = useRef(null)
+
+  useEffect(() => {
+    const timers = []
+    const items = heroRef.current?.querySelectorAll('.hero-animate') ?? []
+    items.forEach((el, i) => {
+      timers.push(setTimeout(() => el.classList.add('visible'), 80 + i * 170))
+    })
+    return () => timers.forEach(clearTimeout)
+  }, [])
+
   return (
-    <section className="hero" id="home">
+    <section className="hero" id="home" ref={heroRef}>
       <div className="hero-decor">
         <img src={IMG_HANDSHAKE_CITY} alt="" aria-hidden="true" className="hero-bg-img" />
         <div className="decor-circle c1" />
@@ -147,17 +172,17 @@ function Hero() {
       </div>
       <div className="hero-grid">
         <div className="hero-text">
-          <div className="hero-badge"><span className="badge-dot" />🏆 Serving Sacramento Since 2021</div>
-          <h1>Professional Services<br /><span className="gold">You Can Trust</span></h1>
-          <p className="hero-sub">
+          <div className="hero-badge hero-animate"><span className="badge-dot" />🏆 Serving Sacramento Since 2021</div>
+          <h1 className="hero-animate">Professional Services<br /><span className="gold">You Can Trust</span></h1>
+          <p className="hero-sub hero-animate">
             Tax, Immigration, Business &amp; Translation services for individuals, families, and small businesses.
             Served in <strong style={{ color: '#e8c06a' }}>English, Dari &amp; Pashto</strong>.
           </p>
-          <div className="hero-btns">
+          <div className="hero-btns hero-animate">
             <a href="#contact" className="btn btn-gold btn-lg">Book Free Consultation</a>
             <a href="#services" className="btn btn-outline btn-lg">View Services</a>
           </div>
-          <div className="hero-trust">
+          <div className="hero-trust hero-animate">
             <div className="trust-item"><span className="check">✓</span> Trusted Since 2021</div>
             <div className="trust-item"><span className="check">✓</span> 100% Confidential</div>
             <div className="trust-item"><span className="check">✓</span> Dari &amp; Pashto Support</div>
@@ -165,9 +190,12 @@ function Hero() {
           </div>
         </div>
 
-        <div className="hero-right">
+        <div className="hero-right hero-animate">
           <LangCard />
         </div>
+      </div>
+      <div className="scroll-hint" aria-hidden="true">
+        <span />
       </div>
     </section>
   )
@@ -314,7 +342,7 @@ function Services() {
         </div>
         <div className="services-grid services-grid-4">
           {SERVICES.map((s, i) => (
-            <div className="service-card" key={i}>
+            <div className="service-card reveal" key={i}>
               <div className="svc-icon">{s.icon}</div>
               <h3>{s.title}</h3>
               <p>{s.desc}</p>
@@ -382,7 +410,7 @@ function WhyUs() {
           </div>
           <div className="why-grid">
             {WHY_US.map((item, i) => (
-              <div className="why-card" key={i}>
+              <div className="why-card reveal" key={i}>
                 <span className="why-icon">{item.icon}</span>
                 <div>
                   <h3>{item.title}</h3>
@@ -443,10 +471,12 @@ function Process() {
         </div>
         <div className="steps">
           {STEPS.map((s, i) => (
-            <div className="step" key={i}>
+            <div className="step reveal" key={i}>
               <div className="step-num">{s.step}</div>
-              <h3>{s.title}</h3>
-              <p>{s.desc}</p>
+              <div className="step-body">
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -490,7 +520,7 @@ function Testimonials() {
         </div>
         <div className="t-grid">
           {TESTIMONIALS.map((t, i) => (
-            <div className="t-card" key={i}>
+            <div className="t-card reveal" key={i}>
               <div className="t-stars">{'★'.repeat(t.rating)}</div>
               <p className="t-text">"{t.text}"</p>
               <div className="t-bottom">
@@ -558,7 +588,7 @@ function FAQ() {
         </div>
         <div className="faq-list">
           {FAQS.map((item, i) => (
-            <div className={`faq-item ${openIdx === i ? 'open' : ''}`} key={i}>
+            <div className={`faq-item reveal ${openIdx === i ? 'open' : ''}`} key={i}>
               <button className="faq-q" onClick={() => setOpenIdx(openIdx === i ? null : i)}>
                 <span>{item.q}</span>
                 <span className="faq-icon">{openIdx === i ? '−' : '+'}</span>
@@ -806,6 +836,7 @@ function Footer() {
 }
 
 export default function App() {
+  useReveal()
   return (
     <>
       <Navbar />
