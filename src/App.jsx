@@ -8,6 +8,77 @@ const IMG_DEVELOPER     = '/images/WhatsApp%20Image%202026-05-14%20at%207.14.55%
 const IMG_CONSULTANT    = '/images/WhatsApp%20Image%202026-05-14%20at%207.15.19%20PM.jpeg'
 const IMG_CAREER        = '/images/WhatsApp%20Image%202026-05-14%20at%207.15.36%20PM.jpeg'
 
+const AURORA_BLOBS = [
+  { fx:0.18, fy:0.40, fr:0.52, ox:0.22, oy:0.16, ratio:0.70, spd:0.0032, col:[212,168,83],  a:0.55 },
+  { fx:0.80, fy:0.55, fr:0.55, ox:0.18, oy:0.20, ratio:0.88, spd:0.0025, col:[228,186,100], a:0.48 },
+  { fx:0.50, fy:0.08, fr:0.46, ox:0.26, oy:0.10, ratio:1.15, spd:0.0042, col:[255,235,160], a:0.38 },
+  { fx:0.90, fy:0.30, fr:0.40, ox:0.08, oy:0.24, ratio:0.95, spd:0.0050, col:[80,130,240],  a:0.42 },
+  { fx:0.10, fy:0.72, fr:0.44, ox:0.16, oy:0.18, ratio:1.25, spd:0.0028, col:[160,90,255],  a:0.38 },
+  { fx:0.60, fy:0.85, fr:0.36, ox:0.20, oy:0.12, ratio:0.78, spd:0.0038, col:[60,180,220],  a:0.32 },
+]
+
+function HeroBg() {
+  const canvasRef = useRef(null)
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const canvas = canvasRef.current
+    const ctx = canvas.getContext('2d')
+    let animId
+    let blobs = []
+
+    function resize() {
+      canvas.width  = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
+      const W = canvas.width, H = canvas.height
+      const scale = Math.min(W, H)
+      blobs = AURORA_BLOBS.map((b, i) => ({
+        ...b,
+        cx:    b.fx * W,
+        cy:    b.fy * H,
+        r:     b.fr * scale,
+        ox:    b.ox * W,
+        oy:    b.oy * H,
+        phase: (i / AURORA_BLOBS.length) * Math.PI * 2,
+      }))
+    }
+
+    function draw() {
+      const W = canvas.width, H = canvas.height
+      ctx.globalCompositeOperation = 'source-over'
+      ctx.clearRect(0, 0, W, H)
+      ctx.globalCompositeOperation = 'screen'
+
+      blobs.forEach(b => {
+        b.phase += b.spd
+        const x = b.cx + Math.cos(b.phase) * b.ox
+        const y = b.cy + Math.sin(b.phase * b.ratio) * b.oy
+        const [r, g, bl] = b.col
+
+        const grad = ctx.createRadialGradient(x, y, 0, x, y, b.r)
+        grad.addColorStop(0,    `rgba(${r},${g},${bl},${b.a})`)
+        grad.addColorStop(0.30, `rgba(${r},${g},${bl},${(b.a * 0.55).toFixed(2)})`)
+        grad.addColorStop(0.65, `rgba(${r},${g},${bl},${(b.a * 0.18).toFixed(2)})`)
+        grad.addColorStop(1,    `rgba(${r},${g},${bl},0)`)
+
+        ctx.beginPath()
+        ctx.arc(x, y, b.r, 0, Math.PI * 2)
+        ctx.fillStyle = grad
+        ctx.fill()
+      })
+
+      animId = requestAnimationFrame(draw)
+    }
+
+    resize()
+    draw()
+    window.addEventListener('resize', resize)
+    return () => { cancelAnimationFrame(animId); window.removeEventListener('resize', resize) }
+  }, [])
+
+  return <canvas ref={canvasRef} className="hero-canvas" aria-hidden="true" />
+}
+
 function useReveal() {
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -164,6 +235,7 @@ function Hero() {
   return (
     <section className="hero" id="home" ref={heroRef}>
       <div className="hero-decor">
+        <HeroBg />
         <img src={IMG_HANDSHAKE_CITY} alt="" aria-hidden="true" className="hero-bg-img" />
         <div className="decor-circle c1" />
         <div className="decor-circle c2" />
