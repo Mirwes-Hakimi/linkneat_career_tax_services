@@ -1,0 +1,6 @@
+export const LOGO              = '/images/logoForLinkneat.jpeg'
+export const IMG_HANDSHAKE_TECH = '/images/WhatsApp%20Image%202026-05-14%20at%207.14.43%20PM.jpeg'
+export const IMG_HANDSHAKE_CITY = '/images/WhatsApp%20Image%202026-05-14%20at%207.14.48%20PM.jpeg'
+export const IMG_DEVELOPER      = '/images/WhatsApp%20Image%202026-05-14%20at%207.14.55%20PM.jpeg'
+export const IMG_CONSULTANT     = '/images/WhatsApp%20Image%202026-05-14%20at%207.15.19%20PM.jpeg'
+export const IMG_CAREER         = '/images/WhatsApp%20Image%202026-05-14%20at%207.15.36%20PM.jpeg'
