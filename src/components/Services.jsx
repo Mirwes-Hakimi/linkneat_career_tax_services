@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { IMG_CONSULTANT } from '../constants/images'
+import { IMG_TAX_FORMS } from '../constants/images'
 
 const SERVICES = [
   {
@@ -73,7 +73,7 @@ export default function Services() {
           <p>Professional, reliable, and affordable services for individuals, families, entrepreneurs, and small businesses.</p>
         </div>
         <div className="svc-banner">
-          <img src={IMG_CONSULTANT} alt="Professional career and business consulting services" />
+          <img src={IMG_TAX_FORMS} alt="Professional tax preparation and consulting services" />
           <div className="svc-banner-overlay">
             <span className="svc-banner-tag">Tax · Immigration · Business · Translation</span>
             <p>Expert guidance tailored to your unique situation, in English, Dari &amp; Pashto</p>

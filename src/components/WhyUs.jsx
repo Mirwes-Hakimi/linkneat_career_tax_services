@@ -1,4 +1,4 @@
-import { IMG_CAREER } from '../constants/images'
+import { IMG_IMMIGRATION } from '../constants/images'
 
 const WHY_US = [
   {
@@ -34,7 +34,7 @@ export default function WhyUs() {
         </div>
         <div className="why-layout">
           <div className="why-img-panel">
-            <img src={IMG_CAREER} alt="Career development and leadership" className="why-panel-img" />
+            <img src={IMG_IMMIGRATION} alt="Professional immigration document review" className="why-panel-img" />
             <div className="why-panel-badge">
               <div className="wpb-num">2,000+</div>
               <div className="wpb-label">Clients Served Since 2021</div>

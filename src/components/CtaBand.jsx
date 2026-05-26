@@ -1,9 +1,9 @@
-import { IMG_HANDSHAKE_TECH } from '../constants/images'
+import { IMG_TAX_CONSULT } from '../constants/images'
 
 export default function CtaBand() {
   return (
     <section className="cta-band">
-      <img src={IMG_HANDSHAKE_TECH} alt="" aria-hidden="true" className="cta-band-bg-img" />
+      <img src={IMG_TAX_CONSULT} alt="" aria-hidden="true" className="cta-band-bg-img" />
       <div className="cta-band-inner">
         <div className="cta-band-text">
           <h2>Professional Service. Trusted Support. Community Focused.</h2>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { IMG_HANDSHAKE_CITY } from '../constants/images'
+import { IMG_IMMIGRATION, IMG_TAX_FORMS } from '../constants/images'
 
 const AURORA_BLOBS = [
   { fx:0.18, fy:0.40, fr:0.52, ox:0.22, oy:0.16, ratio:0.70, spd:0.0032, col:[212,168,83],  a:0.55 },
@@ -180,7 +180,8 @@ export default function Hero() {
     <section className="hero" id="home" ref={heroRef}>
       <div className="hero-decor">
         <HeroBg />
-        <img src={IMG_HANDSHAKE_CITY} alt="" aria-hidden="true" className="hero-bg-img" />
+        <img src={IMG_IMMIGRATION} alt="" aria-hidden="true" className="hero-bg-img hero-bg-desktop" />
+        <img src={IMG_TAX_FORMS}  alt="" aria-hidden="true" className="hero-bg-img hero-bg-mobile" />
         <div className="decor-circle c1" />
         <div className="decor-circle c2" />
         <div className="decor-circle c3" />

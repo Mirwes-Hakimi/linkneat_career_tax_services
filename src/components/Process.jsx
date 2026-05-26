@@ -1,4 +1,4 @@
-import { IMG_DEVELOPER } from '../constants/images'
+import { IMG_CONSULTATION } from '../constants/images'
 
 const STEPS = [
   { step: '01', title: 'Book a Free Consultation', desc: 'Schedule a call or visit our office. We\'ll review your situation and recommend the best approach at no cost.' },
@@ -18,7 +18,7 @@ export default function Process() {
         </div>
         <div className="process-visual">
           <div className="process-visual-img">
-            <img src={IMG_DEVELOPER} alt="Our team working diligently for clients" />
+            <img src={IMG_CONSULTATION} alt="Our team reviewing your documents and case" />
           </div>
           <div className="process-visual-text">
             <h3>Dedicated to Your Success</h3>
