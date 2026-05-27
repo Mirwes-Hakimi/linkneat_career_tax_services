@@ -38,7 +38,7 @@ export default function Footer() {
           <div className="footer-col">
             <strong>Contact</strong>
             <a href="tel:+12105186305">(210) 518-6305</a>
-            <a href="tel:+19163644543">(916) 730-8227</a>
+            <a href="tel:+19167308227">(916) 730-8227</a>
             <a href="mailto:folad@linkneat.com">folad@linkneat.com</a>
             <a href="https://linkneat.com" target="_blank" rel="noopener noreferrer">linkneat.com</a>
             <span>3400 Watt Ave, STE 102</span>

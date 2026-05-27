@@ -31,7 +31,7 @@ export default function LanguageBanner() {
           <div className="lang-col-title">تماس با ما — Contact Us</div>
           <div className="lang-contact-items">
             <a href="tel:+12105186305" className="lang-phone">📞 (210) 518-6305</a>
-            <a href="tel:+19163644543" className="lang-phone">📞 (916) 364-4543</a>
+            <a href="tel:+19167308227" className="lang-phone">📞 (916) 730-8227</a>
             <span className="lang-addr">📍 3400 Watt Ave, STE 102<br />Sacramento, CA 95821</span>
           </div>
           <a href="#contact" className="btn btn-gold" style={{ marginTop: '16px' }}>رایگان مشاوره بگیرید</a>

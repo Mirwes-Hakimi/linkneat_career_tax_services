@@ -63,7 +63,7 @@
 //               <div>
 //                 <strong>Phone</strong>
 //                 <a href="tel:+12105186305">(210) 518-6305</a>
-//                 <a href="tel:+19163644543" style={{ marginTop: '4px', display: 'block' }}>(916) 364-4543</a>
+//                 <a href="tel:+19167308227" style={{ marginTop: '4px', display: 'block' }}>(916) 730-8227</a>
 //               </div>
 //             </div>
 //             <div className="contact-item">
@@ -274,7 +274,7 @@ export default function Contact() {
               <div>
                 <strong>Phone</strong>
                 <a href="tel:+12105186305">(210) 518-6305</a>
-                <a href="tel:+19163644543" style={{ marginTop: '4px', display: 'block' }}>(916) 364-4543</a>
+                <a href="tel:+19167308227" style={{ marginTop: '4px', display: 'block' }}>(916) 730-8227</a>
               </div>
             </div>
             <div className="contact-item">

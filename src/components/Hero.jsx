@@ -155,7 +155,7 @@ function LangCard() {
       <div className="lang-card-contact">
         <div className="lcb-title">{c.contact}</div>
         <a href="tel:+12105186305">📞 (210) 518-6305</a>
-        <a href="tel:+19163644543">📞 (916) 364-4543</a>
+        <a href="tel:+19167308227">📞 (916) 730-8227</a>
         <span>📍 3400 Watt Ave, STE 102, Sacramento, CA 95821</span>
       </div>
 
